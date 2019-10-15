@@ -1,33 +1,47 @@
 import { IChapterInstruction } from '../../../../typings';
 
 const l1 = `
+## Introduction
+
+Hello, in this guide you will learn about how to develop smart contracts and applications that use them for the NEO blockchain, we will do that by building a game of collectible pepes where users can:
+- Claim pepes
+- Trade pepes
+- Award Good Boy Points to their pepes
+
+On this first chapter we will create our first smart contract pepe, complete with good boy point functionality. Let's start!
+
 ## Lesson 1: Contract declaration
 
 **Declaring a contract:**
 
-Let’s begin from the basics. 
-First of all, you’ll need to specify which Scilla version you’re working with. At the moment of writing, Scilla is at version 0.2.0. We only need to be concerned with the first digit, which is zero here, so you will need to type: 
+First of all, currently most smart contracts on Neo are written using C#. In case you have no experience with it, don't worry! This guide assumes no previous knowledge of C# and will teach C# and smart contracts together. For now the only thing that matters is that in order to start doing smart contract magic we'll need to include some libraries from Neo:
 
 \`\`\`
-scilla_version 0
+using Neo.SmartContract.Framework;
+using Neo.SmartContract.Framework.Services.Neo;
 \`\`\`
 
-Now, we can start with the main part of the smart contract coding. The contract that you’ll be deploying to the blockchain has to have a name by which it could later be identified. 
-The format for specifying the contract name is simply: 
+Now, we can start with the main part of the smart contract coding. The contract that you’ll be deploying to the blockchain has to have a name by which it could later be identified. We will also put it inside the Neo namespace to make things easier.
+We will do that with the following lines: 
 
 
 \`\`\`
-contract ContractName
+namespace Neo.SmartContract
+{
+    public class ContractName : Framework.SmartContract
+	{
+	}
+}
 \`\`\`
 
 Where you replace the \`ContractName\` with the actual name for your contract.
 
-Do note that the contract name has to start with a capital letter.
+You can safely ignore all the keywords such as \`namespace\`, \`public\` and \`class\`. These are features of C# which are not rellevant here.
 
 ## Task
 
-1. Begin with the version declaration of Scilla as shown above. 
-2. Then, in next line, declare a contract which should be called \`SocialMediaPayment\`.
+1. Begin writting your smart contract with the library inclusions as shown above. 
+2. Then, in next line, declare a contract which should be called \`NeoPepes\`.
 
 
 

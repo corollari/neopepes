@@ -1,11 +1,10 @@
 {
   "name": "learn-scilla",
   "keywords": [
-    "scilla",
     "smart contract",
-    "zilliqa",
     "blockchain"
   ],
+  "homepage": "https://neopepes.com",
   "version": "0.1.0",
   "scripts": {
     "start": "react-scripts start",

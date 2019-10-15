@@ -7,10 +7,13 @@ sudo: required
 script:
   - yarn install
   - yarn ci
-  - if [[ $TRAVIS_REPO_SLUG == "noelyoo/learn-scilla" && $TRAVIS_BRANCH = "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
-      yarn build;
-      yarn global add firebase-tools typescript tslint;
-      firebase use default;
-      firebase deploy --token $FIREBASE_TOKEN --non-interactive;
-    fi
+  - yarn build
     
+deploy:
+  provider: pages
+  local_dir: build
+  fqdn: neopepes.com
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master

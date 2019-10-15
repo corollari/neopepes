@@ -36,11 +36,11 @@ namespace Neo.SmartContract
 
 Where you replace the \`ContractName\` with the actual name for your contract.
 
-You can safely ignore all the keywords such as \`namespace\`, \`public\` and \`class\`. These are features of C# which are not rellevant here.
+You can safely ignore all the keywords such as \`namespace\`, \`public\` and \`class\`. These are features of C# which are not relevant here.
 
 ## Task
 
-1. Begin writting your smart contract with the library inclusions as shown above. 
+1. Begin your smart contract with the library inclusions shown above. 
 2. Then, in next line, declare a contract which should be called \`NeoPepes\`.
 
 

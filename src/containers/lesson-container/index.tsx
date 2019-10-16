@@ -63,7 +63,7 @@ class LessonContainer extends React.Component<IProps, IState> {
 
     const currentChapterText = `${t('chapter.chapter')} ${chapterNumber}`;
     const currentLessonText = `${t('lesson.lesson')} ${lessonNumber}`;
-    const documentTitle: string = `LearnScilla - ${currentChapterText} ${currentLessonText}`;
+    const documentTitle: string = `NeoPepes - ${currentChapterText} ${currentLessonText}`;
 
     const { pathname } = location;
     return (

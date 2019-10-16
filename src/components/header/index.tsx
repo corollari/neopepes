@@ -80,7 +80,7 @@ const Header = (props) => {
       ref={togglerRef}
     >
       <Link className="navbar-brand" to={paths.home} aria-label={'brand'}>
-        {'LearnScilla'}
+        {'NeoPepes'}
       </Link>
 
       <button className="navbar-toggler" onClick={toggle} aria-label={'menu'}>

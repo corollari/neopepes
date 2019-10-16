@@ -12,7 +12,7 @@ import E from '../../assets/images/asset_e.png';
 
 const Home = (props) => {
   const { history } = props;
-  const documentTitle = `LearnScilla - Home`;
+  const documentTitle = `NeoPepes - Home`;
   return (
     <div>
       <Header {...props} />

@@ -41,7 +41,7 @@ class ChapterContainer extends React.Component<IProps, {}> {
     }
 
     const intructionsLocalized = instructions[lang];
-    const documentTitle = `LearnScilla - An interactive tutorial for people to learn Scilla`;
+    const documentTitle = `NeoPepes - An interactive tutorial on Neo smart contracts`;
     const isAuth = !isEmpty;
 
     return (

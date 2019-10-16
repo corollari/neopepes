@@ -23,7 +23,7 @@ class AccountContainer extends React.Component<IProps, {}> {
   public render(): React.ReactNode {
     const { auth, t } = this.props;
     const { displayName, email, createdAt, isLoaded } = auth;
-    const documentTitle = `LearnScilla - Account`;
+    const documentTitle = `NeoPepes - Account`;
 
     return (
       <div>

@@ -2,7 +2,7 @@
 
 An interactive tutorial on Neo smart contracts.
 
-## Acknowledgement
+## Acknowledgements
 
 This project was originally developed by Neuti Noel Yoo (@neutiyoo) as a guide on writing Scilla, we modified the content and some of the form in order to transform it into NeoPepes, but we've only been able to do this thanks to him for creating it in the first place and making it open source :)
 
@@ -25,8 +25,6 @@ We use [Jest](https://jestjs.io/) for testing.
 ## Contributing
 
 We recommend the community help us make improvements. To report bugs please create an issue in this repository.
-
-#### Read our [contribution guidelines](./CONTRIBUTING.md).
 
 ## License
 

@@ -28,3 +28,9 @@ div.instruction-viewer-container::-webkit-scrollbar-thumb {
 .instruction-code-block {
   margin-bottom: 1rem;
 }
+
+@media (max-width: 991px) {
+  .instruction-viewer-container {
+    height: unset;
+  }
+}

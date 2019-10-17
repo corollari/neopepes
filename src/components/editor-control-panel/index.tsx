@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'accessible-ui';
+import './style.css';
 
 import { FaCheck, FaRegEye, FaRegEyeSlash, FaRegComments, FaTimes } from 'react-icons/fa';
 interface IProps {
@@ -23,7 +24,7 @@ const ControlPanel: React.SFC<IProps> = (props) => {
   const warnableButtonType = showTryAgain ? 'warning' : 'secondary';
 
   return (
-    <div className="py-2">
+    <div className="py-2 wrapper">
       <Button
         level="primary"
         className={`type-${checkAnswerButtonType}`}

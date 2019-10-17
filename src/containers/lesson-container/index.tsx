@@ -72,7 +72,7 @@ class LessonContainer extends React.Component<IProps, IState> {
         <Helmet>
           <title>{documentTitle}</title>
         </Helmet>
-        <div className="container px-0">
+        <div className="container">
           <LessonProgressbar
             navigate={this.navigate}
             chapterNumber={chapterNumber}
@@ -83,10 +83,10 @@ class LessonContainer extends React.Component<IProps, IState> {
           <div className="py-2" />
 
           <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 px-0">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
               <InstructionViewer instruction={instruction} />
             </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6 px-0">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
               {isLastLesson ? (
                 <ChapterCompleteCard
                   navigate={this.navigate}
@@ -115,7 +115,6 @@ class LessonContainer extends React.Component<IProps, IState> {
                 total={numOfTotalLesson}
                 t={t}
               />
-              <div style={{ width: 120 }} />
             </div>
           </div>
         </div>

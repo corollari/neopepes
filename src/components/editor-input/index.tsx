@@ -58,7 +58,7 @@ class EditorInput extends React.Component<IProps, IState> {
           isAnswerVisible={isAnswerVisible}
           showTryAgain={showTryAgain}
         />
-        <div className="text-right">
+        <div className="text-center">
           <ControlPanel
             t={t}
             hanldleToggle={this.hanldleToggle}

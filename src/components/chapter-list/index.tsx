@@ -1,6 +1,5 @@
 import React from 'react';
 import { CourseInstructionType } from '../../typings';
-import './style.css';
 import { Button } from 'accessible-ui';
 
 interface IProps {
@@ -41,7 +40,7 @@ const ChapterList: React.SFC<IProps> = (props) => {
   });
 
   return (
-    <div className="chapter-list" data-testid="chapter-list">
+    <div data-testid="chapter-list">
       {result}
     </div>
   );

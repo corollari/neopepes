@@ -11,12 +11,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:cov": "react-scripts test --coverage",
-    "test:ci": "CI=true react-scripts test --coverage",
+    "test:ci": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "prettier": "prettier \"**/*.+(ts|tsx|css)\"",
     "format": "npm run prettier -- --write",
     "validate": "npm run prettier -- --list-different && tsc --noEmit",
-    "ci": "yarn validate && yarn test:ci"
+    "ci": "yarn test:ci"
   },
   "dependencies": {
     "@types/jest": "^24.0.11",

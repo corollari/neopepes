@@ -12,7 +12,6 @@ describe('Chapter List tests', () => {
     <ChapterList
       ch1Progress={props.ch1Progress}
       chapterList={intructionsLocalized}
-      isAuth={props.isAuth}
       progress={props.progress}
       navigate={navigate}
       t={t}
@@ -22,22 +21,14 @@ describe('Chapter List tests', () => {
   describe('basic tests', () => {
     it('matches the snapshot', () => {
       const tree = renderer
-        .create(baseComponent({ isAuth: true, ch1Progress: 1, progress: { chapter1: 3 } }))
+        .create(baseComponent({ ch1Progress: 1, progress: { chapter1: 3 } }))
         .toJSON();
       expect(tree).toMatchSnapshot();
     });
 
-    it('renders the component when auth is false', () => {
+    it('renders the component', () => {
       const wrapper = shallow(
-        baseComponent({ isAuth: false, ch1Progress: 1, progress: undefined })
-      );
-      const assertion = wrapper.find('[data-testid="chapter-list"]').length;
-      expect(assertion).toBe(1);
-    });
-
-    it('renders the component when auth is true', () => {
-      const wrapper = shallow(
-        baseComponent({ isAuth: true, ch1Progress: 1, progress: { chapter1: 3 } })
+        baseComponent({ ch1Progress: [1, 0, 0, 0, 0, 0, 0], progress: undefined })
       );
       const assertion = wrapper.find('[data-testid="chapter-list"]').length;
       expect(assertion).toBe(1);

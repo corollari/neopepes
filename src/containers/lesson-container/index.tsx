@@ -13,13 +13,10 @@ import InstructionViewer from '../../components/instruction-viewer';
 import LessonNavigator from '../../components/lesson-navigator';
 import { IMatch, CourseCodeType, CourseInstructionType } from '../../typings';
 import CheatSheetModal from '../../components/cheat-sheet-modal';
-import { compose } from 'redux';
-import { withFirebase } from 'react-redux-firebase';
-import { openAuthModal } from '../../redux/auth';
 
 interface IProps {
-  setCh1Progress: (progress: number) => void;
-  openAuthModal: () => void;
+  setCh1Progress: (progress: number[]) => void;
+  ch1Progress: number[];
   i18n: {
     language: string;
     changeLanguage: (lang: string) => void;
@@ -30,7 +27,6 @@ interface IProps {
   match: IMatch;
   instructions: CourseInstructionType;
   codes: CourseCodeType;
-  firebase: any;
   profile: any;
 }
 interface IState {
@@ -145,25 +141,11 @@ class LessonContainer extends React.Component<IProps, IState> {
   };
 
   private updateProgress = (currentChapter: number, currentLesson: number) => {
-    const { firebase, profile } = this.props;
+    const { ch1Progress } = this.props;
 
-    // get progress data from db
-    const progressProfile = profile.progress || {};
-    const chapterKey: string = `chapter${currentChapter}`;
-    const progress = { [chapterKey]: currentLesson };
-
-    const isAuth: boolean = !profile.isEmpty;
-    const chapterProgressNum: number = progressProfile[chapterKey] || 0;
-
-    if (currentChapter === 1) {
-      this.props.setCh1Progress(currentLesson);
-    }
-
-    // Update if progress is less than current lesson
-    if (isAuth && chapterProgressNum < currentLesson) {
-      // Update chapter progress
-      firebase.updateProfile({ progress });
-    }
+    ch1Progress[currentChapter - 1] = currentLesson;
+    let newCh1Progress = ch1Progress;
+    this.props.setCh1Progress(newCh1Progress);
   };
 
   private navigateToNextLesson = (currentChapter: number, currentLesson: number) => {
@@ -178,13 +160,8 @@ class LessonContainer extends React.Component<IProps, IState> {
   };
 
   private navigate = (chapterNum, lessonNum) => {
-    const { profile, history } = this.props;
-    const { isEmpty } = profile;
-    const isAuth = !isEmpty;
+    const { history } = this.props;
 
-    if (!isAuth && chapterNum > 1) {
-      return this.props.openAuthModal();
-    }
     history.push(`/chapter/${chapterNum}/lesson/${lessonNum}`);
   };
 
@@ -225,18 +202,14 @@ const WithTranslation = withNamespaces()(LessonContainer);
 const mapStateToProps = (state) => ({
   instructions: state.course.courseInstructions,
   codes: state.course.courseCodes,
-  profile: state.firebase.profile
+  ch1Progress: state.persist.ch1Progress
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCh1Progress: (localProgress) => dispatch(setCh1Progress(localProgress)),
-  openAuthModal: () => dispatch(openAuthModal())
+  setCh1Progress: (localProgress) => dispatch(setCh1Progress(localProgress))
 });
 
-export default compose(
-  withFirebase,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(WithTranslation);

@@ -6,31 +6,24 @@ import { Button } from 'accessible-ui';
 interface IProps {
   t: (key: string) => string;
   chapterList: CourseInstructionType;
-  ch1Progress: number;
+  ch1Progress: number[];
   progress?: any;
   navigate: (chapterNum, lessonNum) => void;
-  isAuth: boolean;
 }
 
 const ChapterList: React.SFC<IProps> = (props) => {
-  const { t, isAuth, chapterList, progress, ch1Progress, navigate } = props;
+  const { t, chapterList, ch1Progress, navigate } = props;
   const list = chapterList || [];
 
   const result = list.map((item, index) => {
     const chapterNum: number = index + 1;
-    const chapterKey: string = `chapter${chapterNum}`;
 
-    const progressProfile = progress || {};
-    const chapterProgressNum = isAuth
-      ? progressProfile[chapterKey] || 0
-      : chapterNum === 1
-      ? ch1Progress
-      : 0;
+    const chapterProgressNum = ch1Progress[chapterNum - 1];
 
     const lessons: string[] = item.lessons || [];
     const totalNum: number = lessons.length;
     const lessonNum = totalNum <= chapterProgressNum ? totalNum : chapterProgressNum + 1;
-    const progressText = !isAuth && chapterNum !== 1 ? '' : `(${lessonNum}/${totalNum})`;
+    const progressText = `(${lessonNum}/${totalNum})`;
 
     return (
       <div key={chapterNum} className="m-2">

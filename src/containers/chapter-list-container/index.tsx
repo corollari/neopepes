@@ -9,9 +9,6 @@ import { Spinner } from 'accessible-ui';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import './style.css';
-import { compose } from 'redux';
-import { withFirebase } from 'react-redux-firebase';
-import { openAuthModal } from '../../redux/auth';
 
 interface IProps {
   t: (key: string) => string;
@@ -23,16 +20,14 @@ interface IProps {
   location: H.Location;
   instructions: CourseInstructionType;
   profile: any;
-  ch1Progress: number;
-  openAuthModal: () => void;
+  ch1Progress: number[];
 }
 
 class ChapterContainer extends React.Component<IProps, {}> {
   public render(): React.ReactNode {
-    const { instructions, i18n, t, profile, ch1Progress } = this.props;
-    const { isLoaded, isEmpty, progress } = profile;
+    const { instructions, i18n, t, ch1Progress } = this.props;
     const lang: string = i18n.language;
-    if (!isLoaded || instructions === undefined || instructions[lang] === undefined) {
+    if (instructions === undefined || instructions[lang] === undefined) {
       return (
         <div className="text-center py-5">
           <Spinner />
@@ -42,7 +37,6 @@ class ChapterContainer extends React.Component<IProps, {}> {
 
     const intructionsLocalized = instructions[lang];
     const documentTitle = `NeoPepes - An interactive tutorial on Neo smart contracts`;
-    const isAuth = !isEmpty;
 
     return (
       <div>
@@ -58,8 +52,6 @@ class ChapterContainer extends React.Component<IProps, {}> {
                 <br />
                 <ChapterList
                   chapterList={intructionsLocalized}
-                  isAuth={isAuth}
-                  progress={progress}
                   ch1Progress={ch1Progress}
                   navigate={this.navigate}
                   t={t}
@@ -74,12 +66,7 @@ class ChapterContainer extends React.Component<IProps, {}> {
   }
 
   private navigate = (chapterNum, lessonNum) => {
-    const { profile, history } = this.props;
-    const { isEmpty } = profile;
-    const isAuth = !isEmpty;
-    if (!isAuth && chapterNum > 1) {
-      return this.props.openAuthModal();
-    }
+    const { history } = this.props;
 
     const startingChapterPath = `/chapter/${chapterNum}/lesson/${lessonNum}`;
     return history.push(startingChapterPath);
@@ -91,17 +78,10 @@ const WithTranslation = withNamespaces()(ChapterContainer);
 // @ts-check
 const mapStateToProps = (state) => ({
   instructions: state.course.courseInstructions,
-  profile: state.firebase.profile,
   ch1Progress: state.persist.ch1Progress
 });
-const mapDispatchToProps = (dispatch) => ({
-  openAuthModal: () => dispatch(openAuthModal())
-});
 
-export default compose(
-  withFirebase,
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+export default connect(
+  mapStateToProps,
+  null
 )(WithTranslation);

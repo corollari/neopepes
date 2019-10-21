@@ -4,7 +4,10 @@ export const setCh1Progress = (ch1Progress) => ({
   payload: { ch1Progress }
 });
 
-export default function persistReducer(state = { ch1Progress: 0 }, action) {
+export default function persistReducer(
+  state = { ch1Progress: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+  action
+) {
   switch (action.type) {
     case SET_CH1_PROGRESS:
       return {

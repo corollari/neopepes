@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import * as H from 'history';
 import { CourseInstructionType } from '../../typings';
 import ChapterList from '../../components/chapter-list';
-import { Spinner } from 'accessible-ui';
+import { Spinner } from 'react-fn-components';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 import './style.css';

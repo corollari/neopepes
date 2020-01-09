@@ -1,7 +1,6 @@
 import React from 'react';
 import { CourseInstructionType } from '../../typings';
 import { Button } from 'react-fn-components';
-import './style.css';
 
 interface IProps {
   t: (key: string) => string;

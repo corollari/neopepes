@@ -1,14 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '../../components/header';
-import Footer from '../../components/footer';
 import { Button } from 'react-fn-components';
 import { paths } from '../../routes';
 import A from '../../assets/images/pepe.png';
-import B from '../../assets/images/asset_b.png';
-import C from '../../assets/images/asset_c.png';
-import D from '../../assets/images/asset_d.png';
-import E from '../../assets/images/asset_e.png';
 
 const Home = (props) => {
   const { history } = props;
